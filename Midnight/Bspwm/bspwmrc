@@ -1,0 +1,31 @@
+#! /bin/sh
+
+# startup
+sxhkd &
+feh --bg-fill ~/Pictures/Wallpapers/midnight.png
+xsetroot -cursor_name left_ptr
+compton -b --backend glx --paint-on-overlay --vsync drm
+~/.config/polybar/launch.sh
+
+# bspc config
+bspc monitor -d I II III IV V VI VII
+bspc monitor HDMI1 VIII
+
+bspc config border_width         0
+bspc config window_gap           5
+bspc config top_padding 	 25	
+bspc config bottom_padding       0
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+color_normal_border="#ffffff"
+color_active_border="#ffffff"
+color_focused_border="#cccccc"
+color_presel_feedback="#888888"
